@@ -20,7 +20,7 @@
                 <v-img src="https://cdn.vuetifyjs.com/images/logos/v.png" height="34" contain />
             </v-list-item-avatar>
 
-            <v-list-item-title class="title">VUETIFY MD</v-list-item-title>
+            <v-list-item-title class="title">MEXX DENT</v-list-item-title>
         </v-list-item>
 
         <v-divider class="mx-3 mb-3" />
@@ -66,14 +66,14 @@ export default {
     data: () => ({
         links: [
             {
-                to: '/',
+                to: '/dashboard',
                 icon: 'mdi-view-dashboard',
                 text: 'Dashboard',
             },
             {
-                to: '/user-profile',
+                to: '/patients',
                 icon: 'mdi-account',
-                text: 'User Profile',
+                text: 'Пациенты',
             },
             {
                 to: '/table-list',

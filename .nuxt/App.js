@@ -6,11 +6,12 @@ import NuxtError from './components/nuxt-error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
-import '..\\assets\\less\\main.less'
+import '../assets/less/main.less'
 
-import _6f6c098b from '..\\layouts\\default.vue'
+import _77180f1e from '../layouts/blank.vue'
+import _6f6c098b from '../layouts/default.vue'
 
-const layouts = { "_default": sanitizeComponent(_6f6c098b) }
+const layouts = { "_blank": sanitizeComponent(_77180f1e),"_default": sanitizeComponent(_6f6c098b) }
 
 export default {
   render (h, props) {

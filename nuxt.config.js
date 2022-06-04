@@ -3,7 +3,7 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: 'nuxt-vuetify-dashboard',
+        title: 'MexxDent CRM для стоматологии',
         meta: [
             { charset: 'utf-8' },
             {
@@ -79,12 +79,42 @@ module.exports = {
     /*
      ** Nuxt.js modules
      */
-    modules: ['@nuxtjs/axios'],
+    modules: ['@nuxtjs/axios', '@nuxtjs/auth-next'],
     /*
      ** Axios module configuration
      ** See https://axios.nuxtjs.org/options
      */
     axios: {
-        // proxyHeaders: false
+        baseURL: 'http://127.0.0.1:8000/api/',
+        credentials: true,
+    },
+    auth: {
+        scopeKey: 'scope',
+        strategies: {
+            local: {
+                token: {
+                    property: 'access_token',
+                    global: true,
+                    // required: true,
+                    type: 'Bearer',
+                },
+                user: {
+                    property: 'user',
+                    autoFetch: true,
+                },
+                endpoints: {
+                    login: { url: '/login/access-token', method: 'post' },
+                    logout: false,
+                    user: { url: '/users/me', method: 'get' },
+                },
+            },
+        },
+        redirect: {
+            login: '/login',
+            logout: '/',
+            callback: false,
+            home: '/dashboard',
+        },
+        rewriteRedirects: false,
     },
 };

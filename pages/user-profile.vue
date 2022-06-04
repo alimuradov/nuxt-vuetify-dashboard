@@ -61,17 +61,16 @@
             <v-col cols="12" md="4">
                 <material-card class="v-card-profile">
                     <v-avatar slot="offset" class="mx-auto d-block elevation-6" size="130">
-                        <img src="https://demos.creative-tim.com/vue-material-dashboard/img/marc.aba54d65.jpg" />
+                        <img src="https://cdn.vuetifyjs.com/images/john.jpg" />
                     </v-avatar>
                     <v-card-text class="text-center">
-                        <h6 class="overline mb-3">CEO / CO-FOUNDER</h6>
+                        <h6 v-if="this.$auth.user" class="overline mb-3">{{ position }}</h6>
+                        <h4 v-if="this.$auth.user" class="font-weight-light">
+                            {{ username }}
+                        </h4>
+                        <h4 v-else class="font-weight-light">Alec Thompson</h4>
 
-                        <h4 class="font-weight-light">Alec Thompson</h4>
-
-                        <p class="font-weight-light">
-                            Don't be scared of the truth because we need to restart the human foundation in truth And I
-                            love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                        </p>
+                        <p class="font-weight-light"></p>
 
                         <v-btn color="success">Follow</v-btn>
                     </v-card-text>
@@ -82,5 +81,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            // username: '',
+        };
+    },
+    computed: {
+        username() {
+            return this.$auth.user.full_name;
+        },
+        position() {
+            return this.$auth.user.position;
+        },
+    },
+};
 </script>

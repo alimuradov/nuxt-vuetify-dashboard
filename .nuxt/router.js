@@ -4,14 +4,16 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _5e25c254 = () => interopDefault(import('..\\pages\\icons.vue' /* webpackChunkName: "pages/icons" */))
-const _077be9ea = () => interopDefault(import('..\\pages\\maps.vue' /* webpackChunkName: "pages/maps" */))
-const _e7b534b8 = () => interopDefault(import('..\\pages\\notifications.vue' /* webpackChunkName: "pages/notifications" */))
-const _47f393b1 = () => interopDefault(import('..\\pages\\table-list.vue' /* webpackChunkName: "pages/table-list" */))
-const _90132dd2 = () => interopDefault(import('..\\pages\\tpgrade.vue' /* webpackChunkName: "pages/tpgrade" */))
-const _d2740eba = () => interopDefault(import('..\\pages\\typography.vue' /* webpackChunkName: "pages/typography" */))
-const _3c7983ca = () => interopDefault(import('..\\pages\\user-profile.vue' /* webpackChunkName: "pages/user-profile" */))
-const _1abf4ee4 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _1bae1d78 = () => interopDefault(import('../pages/dashboard.vue' /* webpackChunkName: "pages/dashboard" */))
+const _03f592aa = () => interopDefault(import('../pages/Icons.vue' /* webpackChunkName: "pages/Icons" */))
+const _215f210e = () => interopDefault(import('../pages/Login.vue' /* webpackChunkName: "pages/Login" */))
+const _2731ccb7 = () => interopDefault(import('../pages/Maps.vue' /* webpackChunkName: "pages/Maps" */))
+const _84927510 = () => interopDefault(import('../pages/Notifications.vue' /* webpackChunkName: "pages/Notifications" */))
+const _c690cf86 = () => interopDefault(import('../pages/table-list.vue' /* webpackChunkName: "pages/table-list" */))
+const _3170dfea = () => interopDefault(import('../pages/tpgrade.vue' /* webpackChunkName: "pages/tpgrade" */))
+const _a05e6d62 = () => interopDefault(import('../pages/Typography.vue' /* webpackChunkName: "pages/Typography" */))
+const _15984fa7 = () => interopDefault(import('../pages/user-profile.vue' /* webpackChunkName: "pages/user-profile" */))
+const _a392a6fc = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -25,36 +27,44 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-    path: "/icons",
-    component: _5e25c254,
-    name: "icons"
+    path: "/dashboard",
+    component: _1bae1d78,
+    name: "dashboard"
   }, {
-    path: "/maps",
-    component: _077be9ea,
-    name: "maps"
+    path: "/Icons",
+    component: _03f592aa,
+    name: "Icons"
   }, {
-    path: "/notifications",
-    component: _e7b534b8,
-    name: "notifications"
+    path: "/Login",
+    component: _215f210e,
+    name: "Login"
+  }, {
+    path: "/Maps",
+    component: _2731ccb7,
+    name: "Maps"
+  }, {
+    path: "/Notifications",
+    component: _84927510,
+    name: "Notifications"
   }, {
     path: "/table-list",
-    component: _47f393b1,
+    component: _c690cf86,
     name: "table-list"
   }, {
     path: "/tpgrade",
-    component: _90132dd2,
+    component: _3170dfea,
     name: "tpgrade"
   }, {
-    path: "/typography",
-    component: _d2740eba,
-    name: "typography"
+    path: "/Typography",
+    component: _a05e6d62,
+    name: "Typography"
   }, {
     path: "/user-profile",
-    component: _3c7983ca,
+    component: _15984fa7,
     name: "user-profile"
   }, {
     path: "/",
-    component: _1abf4ee4,
+    component: _a392a6fc,
     name: "index"
   }],
 

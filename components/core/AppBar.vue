@@ -31,8 +31,8 @@
 
                     <v-card>
                         <v-list dense>
-                            <v-list-item v-for="notification in notifications" :key="notification" @click="onClick">
-                                <v-list-item-title v-text="notification" />
+                            <v-list-item v-for="notification in notifications" :key="notification.id" @click="onClick">
+                                <v-list-item-title v-text="notification.text" />
                             </v-list-item>
                         </v-list>
                     </v-card>
@@ -40,6 +40,9 @@
 
                 <v-btn to="/user-profile" icon>
                     <v-icon color="tertiary">mdi-account</v-icon>
+                </v-btn>
+                <v-btn v-if="loggedIn" @click="logout" icon>
+                    <v-icon color="tertiary">mdi-export</v-icon>
                 </v-btn>
             </v-row>
         </v-toolbar-items>
@@ -49,16 +52,11 @@
 <script>
 // Utilities
 import { mapMutations } from 'vuex';
+import { mapState } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     data: () => ({
-        notifications: [
-            'Mike, John responded to your email',
-            'You have 5 new tasks',
-            "You're now a friend with Andrew",
-            'Another Notification',
-            'Another One',
-        ],
         title: null,
         responsive: false,
     }),
@@ -69,15 +67,34 @@ export default {
         },
     },
 
+    computed: {
+        ...mapState('auth', ['loggedIn', 'user']),
+        ...mapGetters({
+            notifications: 'notifications/getList',
+        }),
+    },
+
     mounted() {
-        this.onResponsiveInverted();
-        window.addEventListener('resize', this.onResponsiveInverted);
+        // const strToken = this.$auth.strategy.token.get();
+        // const token = strToken.substr(7);
+        // const evtSource = new EventSource('http://localhost:8000/api/notifications/sse?token=' + token);
+        // this.onResponsiveInverted();
+        // window.addEventListener('resize', this.onResponsiveInverted);
+
+        // evtSource.addEventListener('notify', function (event) {
+        //     // Logic to handle status updates
+        //     console.log(event);
+        // });
+        this.$store.dispatch('notifications/setList');
     },
     beforeDestroy() {
         window.removeEventListener('resize', this.onResponsiveInverted);
     },
 
     methods: {
+        ...mapActions({
+            setList: 'notifications/setList',
+        }),
         ...mapMutations('app', ['setDrawer', 'toggleDrawer']),
         onClick() {
             this.setDrawer(!this.$store.state.app.drawer);
@@ -88,6 +105,9 @@ export default {
             } else {
                 this.responsive = false;
             }
+        },
+        async logout() {
+            await this.$auth.logout();
         },
     },
 };
